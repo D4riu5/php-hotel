@@ -54,6 +54,15 @@ $hotels = [
 
 <div class="container">
   <h1 class="my-3">Hotel List</h1>
+  <form method="get" class="d-flex align-items-center">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="parking" id="parking" <?php if (isset($_GET['parking']) && $_GET['parking'] == 'on') echo 'checked'; ?>>
+      <label class="form-check-label" for="parking">
+        Only show hotels with parking
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary mx-2">Filter</button>
+  </form>
   <table class="table text-white">
     <thead>
       <tr>
@@ -67,6 +76,9 @@ $hotels = [
     <tbody>
       <?php
       foreach ($hotels as $hotel) {
+        if (isset($_GET['parking']) && !$hotel['parking']) {
+            continue;
+          }
         echo '<tr>';
         echo '<td>' . $hotel['name'] . '</td>';
         echo '<td>' . $hotel['description'] . '</td>';
