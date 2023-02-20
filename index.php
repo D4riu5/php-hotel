@@ -52,17 +52,34 @@ $hotels = [
 ];
 ?>
 
-<?php
-    foreach ($hotels as $hotel) {
-        echo '<div class="">';
-        echo '<h2>' . $hotel['name'] . '</h2>';
-        echo $hotel['description'] . '<br>';
-        echo ($hotel['parking'] ? 'does have parking' : 'does not have parking') . '<br>';
-        echo 'vote ' . $hotel['vote'] . '<br>';
-        echo 'distance from center = ' . $hotel['distance_to_center'] . ' km<br><br>';
-        echo '</div>';
-    }
-?>
+<div class="container">
+  <h1 class="my-3">Hotel List</h1>
+  <table class="table text-white">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Parking</th>
+        <th>Vote</th>
+        <th>Distance from Center (km)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      foreach ($hotels as $hotel) {
+        echo '<tr>';
+        echo '<td>' . $hotel['name'] . '</td>';
+        echo '<td>' . $hotel['description'] . '</td>';
+        echo '<td>' . ($hotel['parking'] ? 'Yes' : 'No') . '</td>';
+        echo '<td>' . $hotel['vote'] . '</td>';
+        echo '<td>' . $hotel['distance_to_center'] . '</td>';
+        echo '</tr>';
+      }
+      ?>
+    </tbody>
+  </table>
+</div>
+
 
 
 </body>
